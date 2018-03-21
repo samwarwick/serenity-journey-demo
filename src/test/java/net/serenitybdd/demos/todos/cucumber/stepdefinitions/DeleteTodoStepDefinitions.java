@@ -1,10 +1,8 @@
 package net.serenitybdd.demos.todos.cucumber.stepdefinitions;
 
-import cucumber.api.Pending;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.serenitybdd.core.IgnoredStepException;
 import net.serenitybdd.demos.todos.model.ExpectedItemsNotDisplayed;
 import net.serenitybdd.demos.todos.tasks.AddItems;
 import net.serenitybdd.demos.todos.tasks.CompleteItem;

@@ -15,5 +15,4 @@ public class ToDoList {
         String COMPLETE_BUTTON = "//*[@class='view' and contains(.,'%s')]//input[@type='checkbox']";
         return Target.the("Complete button").locatedBy(String.format(COMPLETE_BUTTON, itemName));
     }
-
 }

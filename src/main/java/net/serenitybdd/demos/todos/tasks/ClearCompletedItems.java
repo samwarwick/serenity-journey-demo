@@ -4,10 +4,7 @@ import net.serenitybdd.demos.todos.pages.components.FilterBar;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.tasks.Click;
-import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Step;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class ClearCompletedItems implements Performable {
 

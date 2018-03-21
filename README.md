@@ -15,3 +15,14 @@ mvn clean verify -Dcucumber.options="--tags @smoke"
 ```
 
 The Serenity reports will be generated in the `target/site/serenity` directory.
+
+
+## Running tests with Docker
+
+To run the tests locally with a Selenium Docker image:
+
+```
+docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome
+mvn clean verify -Dwebdriver.remote.url=http://localhost:4444/wd/hub
+```
+
