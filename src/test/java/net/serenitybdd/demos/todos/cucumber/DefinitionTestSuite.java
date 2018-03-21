@@ -1,9 +1,12 @@
 package net.serenitybdd.demos.todos.cucumber;
 
-import cucumber.api.CucumberOptions;
-import net.serenitybdd.cucumber.CucumberWithSerenity;
 import org.junit.runner.RunWith;
 
+import cucumber.api.CucumberOptions;
+import net.serenitybdd.cucumber.CucumberWithSerenity;
+
 @RunWith(CucumberWithSerenity.class)
-@CucumberOptions(features="src/test/resources/features/record_todos", format = { "pretty:target/cucumber.txt" })
-public class RecordTodos {}
+@CucumberOptions(features="classpath:features", plugin="rerun:target/rerun.txt")
+public class DefinitionTestSuite {
+
+}

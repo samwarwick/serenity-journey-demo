@@ -1,11 +1,17 @@
-# serenity-journey-demo
+# serenity-ui-todomvc
 
-A simple demonstration project using Serenity with Cucumber and JUnit, running tests against the http://todomvc.com/examples/angularjs/#/ application.
+A simple demonstration project using Serenity with Cucumber, running tests against the http://todomvc.com/examples/angularjs/#/ application.
 
 The project runs using JDK 1.8 and Maven. To run the demo, run:
 
 ```
 mvn clean verify
+```
+
+To run a single smoke test:
+
+```
+mvn clean verify -Dcucumber.options="--tags @smoke"
 ```
 
 The Serenity reports will be generated in the `target/site/serenity` directory.

@@ -58,7 +58,7 @@ public class TodoPage extends PageObject {
     }
 
     private boolean isShownAsCompleted(WebElementFacade actionRow) {
-        return actionRow.find(By.tagName("label")).getCssValue("text-decoration").equals("line-through");
+        return actionRow.find(By.tagName("label")).getCssValue("text-decoration").contains("line-through");
     }
 
     public void updateAction(String currentActionName, String newActionName) {
