@@ -17,9 +17,18 @@ mvn clean verify -Dcucumber.options="--tags @smoke"
 The Serenity reports will be generated in the `target/site/serenity` directory.
 
 
-## Running tests with Docker
+## Headless Chrome
 
-To run the tests locally with a Selenium Docker image:
+To run in headless mode:
+
+```
+mvn clean verify -Dchrome.switches=--headless
+```
+
+
+## Running with Docker
+
+To run the tests locally within a Selenium Docker container:
 
 ```
 docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome
