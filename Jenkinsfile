@@ -1,6 +1,6 @@
 node {
     def mvnHome
-	def mvnArgs
+	def mvnArgs = env.MAVEN_ARGS ?: "-Dwebdriver.driver=chrome -Dchrome.switches=--headless"
 	
     stage('Checkout') { 
         checkout scm
@@ -8,7 +8,7 @@ node {
     }
 	
 	stage('Smoke') {
-		mvnArgs = "clean verify -Dwebdriver.driver=chrome -Dchrome.switches=--headless -Dcucumber.options=\"--tags @smoke\""
+		mvnArgs = "clean verify ${mvnArgs} -Dcucumber.options=\"--tags @smoke\""
 		if (isUnix()) {
 			sh "'${mvnHome}/bin/mvn' ${mvnArgs}"
 		} else {
@@ -25,7 +25,7 @@ node {
     }
 	
     stage('UI') {
-		mvnArgs = "clean verify -Dwebdriver.driver=chrome -Dchrome.switches=--headless"
+		mvnArgs = "clean verify ${mvnArgs}"
 		try {
 			if (isUnix()) {
 				sh "'${mvnHome}/bin/mvn' ${mvnArgs}"
