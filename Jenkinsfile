@@ -1,6 +1,7 @@
 node {
     def mvnHome
 	def mvnArgs = env.MAVEN_ARGS ?: "-Dwebdriver.driver=chrome -Dchrome.switches=--headless"
+	def mvnStageArgs
 	
     stage('Checkout') { 
         checkout scm
@@ -8,11 +9,11 @@ node {
     }
 	
 	stage('Smoke') {
-		mvnArgs = "clean verify ${mvnArgs} -Dcucumber.options=\"--tags @smoke\""
+		mvnStageArgs = "clean verify ${mvnArgs} -Dcucumber.options=\"--tags @smoke\""
 		if (isUnix()) {
-			sh "'${mvnHome}/bin/mvn' ${mvnArgs}"
+			sh "'${mvnHome}/bin/mvn' ${mvnStageArgs}"
 		} else {
-			bat "${mvnHome}\\bin\\mvn ${mvnArgs}"
+			bat "${mvnHome}\\bin\\mvn ${mvnStageArgs}"
 		}
 		publishHTML(target: [
 			reportName : 'Smoke',
@@ -25,12 +26,12 @@ node {
     }
 	
     stage('UI') {
-		mvnArgs = "clean verify ${mvnArgs}"
+		mvnStageArgs = "clean verify ${mvnArgs}"
 		try {
 			if (isUnix()) {
-				sh "'${mvnHome}/bin/mvn' ${mvnArgs}"
+				sh "'${mvnHome}/bin/mvn' ${mvnStageArgs}"
 			} else {
-				bat "${mvnHome}\\bin\\mvn ${mvnArgs}"
+				bat "${mvnHome}\\bin\\mvn ${mvnStageArgs}"
 			}
 		} catch (err) {
 
